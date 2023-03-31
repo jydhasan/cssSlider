@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .slider img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 5s ease-in-out;
+        }
+
+        .slider img:checked {
+            opacity: 1;
+        }
+
+        .slider input:checked+img {
+            opacity: 1;
+        }
+
+        .slider input:not(:checked)+img {
+            animation: fade-out 5s ease-in-out forwards;
+        }
+
+        .slider input:checked+img+img {
+            animation: fade-in 5s ease-in-out forwards;
+        }
+
+        @keyframes fade-out {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="slider">
+        <input type="radio" id="slide1" name="slides" checked>
+        <img src="image1.jpg">
+        <input type="radio" id="slide2" name="slides">
+        <img src="image2.jpg">
+        <input type="radio" id="slide3" name="slides">
+        <img src="image3.jpg">
+        <!-- ... -->
+        <label for="slide1"></label>
+        <label for="slide2"></label>
+        <label for="slide3"></label>
+        <!-- ... -->
+    </div>
+
+</body>
+
+</html>
